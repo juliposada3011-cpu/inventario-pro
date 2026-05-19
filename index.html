@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Inventario PRO</title>
+
+<link rel="stylesheet" href="styles.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <h2>📦 Inventario PRO</h2>
+
+        <ul>
+            <li class="active" onclick="mostrar(event,'dashboard')">📊 Dashboard</li>
+            <li onclick="mostrar(event,'productos')">📦 Productos</li>
+            <li onclick="mostrar(event,'historial')">🧾 Historial</li>
+
+            <!-- 🔥 NUEVO -->
+            <li onclick="mostrar(event,'facturas')">🧾 Facturas</li>
+        </ul>
+
+        <div class="spacer"></div>
+
+        <button class="logout" onclick="logout()">Cerrar sesión</button>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- ================= DASHBOARD ================= -->
+        <div id="dashboard" class="vista">
+
+            <div class="header">
+                <h1>Dashboard</h1>
+            </div>
+
+            <div class="cards">
+                <div class="card">
+                    <p>📦 Total productos</p>
+                    <h3 id="total">0</h3>
+                </div>
+
+                <div class="card">
+                    <p>⚠️ Stock bajo</p>
+                    <h3 id="bajos">0</h3>
+                </div>
+
+                <div class="card">
+                    <p>💰 Ventas totales</p>
+                    <h3 id="ventas">$0</h3>
+                </div>
+            </div>
+
+            <div class="grid-2">
+
+                <div class="section">
+                    <h2>📊 Inventario</h2>
+                    <canvas id="miGrafica"></canvas>
+                </div>
+
+                <div class="section">
+                    <h2>📈 Ventas</h2>
+                    <canvas id="graficaVentas"></canvas>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= PRODUCTOS ================= -->
+        <div id="productos" class="vista" style="display:none;">
+
+            <div class="section">
+
+                <div class="search">
+                    <input id="buscar" type="text" placeholder="🔍 Buscar producto..." onkeyup="filtrar()">
+                </div>
+
+                <div class="form">
+                    <input id="nombre" type="text" placeholder="Nombre del producto">
+                    <input id="precio" type="number" placeholder="Precio">
+                    <input id="stock" type="number" placeholder="Stock">
+                    <button onclick="guardar()">➕ Guardar</button>
+
+                    <!-- 🔥 FACTURA -->
+                    <button class="facturar" onclick="crearFactura()">🧾 Facturar</button>
+                        
+                    </button>
+                </div>
+
+                <div class="tabla-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla"></tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= HISTORIAL ================= -->
+        <div id="historial" class="vista" style="display:none;">
+
+            <div class="section">
+                <h2>🧾 Historial de Ventas</h2>
+
+                <div class="tabla-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Total</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaVentas"></tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= FACTURAS ================= -->
+        <div id="facturas" class="vista" style="display:none;">
+
+            <div class="section">
+                <h2>🧾 Facturas</h2>
+
+                <div class="tabla-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Cliente</th>
+                                <th>Fecha</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaFacturas"></tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<div id="chat-btn" onclick="toggleChat()">💬</div>
+<div id="chatbot" style="display:none;">
+
+    <div class="chat-header">
+        Soporte
+        <span onclick="toggleChat()">✖</span>
+    </div>
+
+    <div id="chat-box"></div>
+
+    <div class="chat-input">
+        <input id="chat-input" placeholder="Escribe...">
+        <button onclick="enviarChat()">➤</button>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

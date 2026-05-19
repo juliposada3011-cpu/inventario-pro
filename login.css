@@ -1,0 +1,135 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
+}
+
+/* FONDO AZUL */
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:radial-gradient(circle at 20% 20%, #1e3a8a, #020617 70%);
+  overflow:hidden;
+}
+
+/* PARTÍCULAS */
+body::before, body::after{
+  content:"";
+  position:absolute;
+  width:200%;
+  height:200%;
+  background:
+    radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.15), transparent),
+    radial-gradient(2px 2px at 70% 60%, rgba(255,255,255,0.1), transparent);
+  animation:moveStars 30s linear infinite;
+  pointer-events:none;
+}
+
+body::after{
+  animation-duration:50s;
+  opacity:0.5;
+}
+
+@keyframes moveStars{
+  from{transform:translateY(0);}
+  to{transform:translateY(-50%);}
+}
+
+/* CARD */
+.login-box{
+  position:relative;
+  z-index:2;
+  background:rgba(2,6,23,0.8);
+  backdrop-filter:blur(15px);
+  padding:40px;
+  border-radius:20px;
+  width:320px;
+  text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,0.6);
+}
+
+/* TITULO */
+.login-box h2{
+  color:white;
+}
+
+.subtitle{
+  color:#94a3b8;
+  font-size:14px;
+  margin-bottom:15px;
+}
+
+/* INPUT */
+input{
+  width:100%;
+  padding:12px;
+  margin-bottom:15px;
+  border:none;
+  border-radius:10px;
+  background:#1e293b;
+  color:white;
+}
+
+input:focus{
+  outline:2px solid #3b82f6;
+}
+
+/* PASSWORD */
+.password-container{
+  position:relative;
+}
+
+.eye{
+  position:absolute;
+  right:10px;
+  top:12px;
+  cursor:pointer;
+}
+
+/* BOTÓN AZUL PRO */
+button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(135deg,#3b82f6,#2563eb);
+  color:white;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+}
+
+/* BRILLO */
+button::before{
+  content:"";
+  position:absolute;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,0.4),transparent);
+}
+
+button:hover::before{
+  animation:shine 1s;
+}
+
+@keyframes shine{
+  from{left:-100%;}
+  to{left:100%;}
+}
+
+button:hover{
+  box-shadow:0 0 20px #3b82f6;
+}
+
+/* LINK */
+a{
+  color:#60a5fa;
+}
+
+#msg{
+  margin-top:10px;
+}

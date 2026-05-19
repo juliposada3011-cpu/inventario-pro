@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro</title>
+
+<link rel="stylesheet" href="registro.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="login-box">
+
+    <h2>Crear cuenta</h2>
+    <p class="subtitle">Regístrate para comenzar</p>
+
+    <!-- USUARIO -->
+    <input id="user" placeholder="Usuario">
+
+    <!-- CONTRASEÑA -->
+    <div class="password-container">
+        <input id="pass" type="password" placeholder="Contraseña">
+        <span class="eye" onclick="togglePass('pass')">👁️</span>
+    </div>
+
+    <!-- CONFIRMAR -->
+    <div class="password-container">
+        <input id="confirm" type="password" placeholder="Confirmar contraseña">
+        <span class="eye" onclick="togglePass('confirm')">👁️</span>
+    </div>
+
+    <!-- BOTÓN -->
+    <button onclick="registrar()">Registrarse</button>
+
+    <!-- LINK -->
+    <p class="back">
+        <a href="#" onclick="irLogin()">← Volver al login</a>
+    </p>
+
+    <!-- MENSAJES -->
+    <div id="msg"></div>
+
+</div>
+
+<script src="registro.js"></script>
+
+</body>
+</html>
